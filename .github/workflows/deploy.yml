@@ -36,7 +36,7 @@ jobs:
           source: "_site/*"
           target: /var/www/toynbee/explore-toynbee-hall
           strip_components: 1
-          rm: true
+          rm: false  # Keep existing files (assets are uploaded separately)
 
       - name: Reload nginx
         uses: appleboy/ssh-action@v1.0.3

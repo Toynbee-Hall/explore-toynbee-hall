@@ -1,9 +1,11 @@
 module.exports = function(eleventyConfig) {
-  // Copy static assets directly to output
-  eleventyConfig.addPassthroughCopy("src/assets");
-
-  // Watch for CSS changes during development
-  eleventyConfig.addWatchTarget("src/assets/theme/css/");
+  // Assets are uploaded directly to server, not included in git
+  // Only copy assets if they exist locally (for development)
+  const fs = require('fs');
+  if (fs.existsSync('src/assets')) {
+    eleventyConfig.addPassthroughCopy("src/assets");
+    eleventyConfig.addWatchTarget("src/assets/theme/css/");
+  }
 
   // Add a filter to slugify strings (for tag URLs etc)
   eleventyConfig.addFilter("slugify", function(str) {
