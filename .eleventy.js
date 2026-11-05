@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
-  // Theme assets (CSS, JS, fonts) are in git and always copied
+  // Theme and vendor assets (CSS, JS, fonts, libraries) are in git
   eleventyConfig.addPassthroughCopy("src/assets/theme");
+  eleventyConfig.addPassthroughCopy("src/assets/vendor");
   eleventyConfig.addWatchTarget("src/assets/theme/css/");
 
   // Large media assets are uploaded directly to server
@@ -11,9 +12,6 @@ module.exports = function(eleventyConfig) {
   }
   if (fs.existsSync('src/assets/Pano')) {
     eleventyConfig.addPassthroughCopy("src/assets/Pano");
-  }
-  if (fs.existsSync('src/assets/vendor')) {
-    eleventyConfig.addPassthroughCopy("src/assets/vendor");
   }
 
   // Add a filter to slugify strings (for tag URLs etc)
