@@ -1,0 +1,2523 @@
+/**
+ * Toynbee Hall Website Redesign v2
+ * Inspired by Museum of Toronto & Historia Europa
+ * Focus: Generous whitespace, bold accents, modern typography
+ */
+
+/* ==========================================================================
+   1. CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+:root {
+    /* Primary Palette - Museum of Toronto inspired */
+    --color-primary: #1a3a52;
+    --color-primary-light: #2d5a7b;
+    --color-primary-dark: #0f2233;
+
+    /* Accent Colors - Bold & Vibrant */
+    --color-accent-yellow: #FFDC00;
+    --color-accent-blue: #52CAF5;
+    --color-accent-coral: #E85A4F;
+    --color-accent-teal: #2A9D8F;
+
+    /* Historical/Archive feel */
+    --color-warm: #D4A373;
+    --color-warm-light: #E9C89F;
+
+    /* Neutrals - Cleaner, lighter */
+    --color-white: #ffffff;
+    --color-cream: #FDFBF7;
+    --color-gray-50: #F8F9FA;
+    --color-gray-100: #F1F3F5;
+    --color-gray-200: #E9ECEF;
+    --color-gray-300: #DEE2E6;
+    --color-gray-400: #CED4DA;
+    --color-gray-500: #ADB5BD;
+    --color-gray-600: #868E96;
+    --color-gray-700: #495057;
+    --color-gray-800: #343A40;
+    --color-gray-900: #212529;
+    --color-black: #000000;
+
+    /* Typography */
+    --font-heading: 'Libre Baskerville', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Spacing Scale - Balanced */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
+    --space-16: 4rem;     /* 64px */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+}
+
+/* ==========================================================================
+   2. Base Reset & Typography
+   ========================================================================== */
+
+* {
+    box-sizing: border-box !important;
+}
+
+html {
+    font-size: 100% !important;
+    scroll-behavior: smooth !important;
+}
+
+body {
+    font-family: var(--font-body) !important;
+    font-size: 1.0625rem !important;
+    line-height: 1.7 !important;
+    color: var(--color-gray-700) !important;
+    background-color: var(--color-white) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Headings - Elegant serif with generous spacing */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: var(--color-primary) !important;
+    margin-top: 0 !important;
+    letter-spacing: -0.01em !important;
+}
+
+h1 {
+    font-size: 3rem !important;
+    margin-bottom: var(--space-6) !important;
+}
+
+h2 {
+    font-size: 2.25rem !important;
+    margin-bottom: var(--space-5) !important;
+}
+
+h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+h4 {
+    font-size: 1.25rem !important;
+    margin-bottom: var(--space-3) !important;
+}
+
+p {
+    margin-bottom: var(--space-5) !important;
+    max-width: 70ch !important;
+}
+
+a {
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+    transition: color var(--transition-fast) !important;
+}
+
+a:hover {
+    color: var(--color-accent-coral) !important;
+}
+
+/* ==========================================================================
+   3. Layout & Containers
+   ========================================================================== */
+
+.grid-container {
+    max-width: 1440px !important;
+    padding-left: var(--space-6) !important;
+    padding-right: var(--space-6) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Sticky footer layout */
+html, body {
+    height: 100% !important;
+}
+
+#page {
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+}
+
+main#content {
+    flex: 1 0 auto !important;
+}
+
+#main-footer {
+    flex-shrink: 0 !important;
+}
+
+main#content {
+    padding-top: 0 !important;
+}
+
+/* Section spacing - Much more breathing room */
+section,
+.cell {
+    margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   4. Header & Navigation
+   ========================================================================== */
+
+#masthead {
+    background: var(--color-white) !important;
+    border-bottom: 1px solid var(--color-gray-200) !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+#topBar {
+    background: var(--color-primary) !important;
+    padding: var(--space-3) 0 !important;
+}
+
+#topBar .access {
+    color: var(--color-white) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    opacity: 0.9 !important;
+}
+
+#topBar .access:hover {
+    opacity: 1 !important;
+}
+
+#accessMenu {
+    background: var(--color-primary-dark) !important;
+    padding: var(--space-6) !important;
+}
+
+#accessMenu h3,
+#accessMenu h4 {
+    color: var(--color-white) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+}
+
+#menuBar {
+    padding: var(--space-5) var(--space-6) !important;
+}
+
+#menuBar.grid-container {
+    padding-left: var(--space-6) !important;
+    padding-right: var(--space-6) !important;
+}
+
+/* Site title text styling */
+.site-title {
+    font-family: var(--font-heading) !important;
+    font-size: 1.75rem !important;
+    font-weight: 500 !important;
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+    letter-spacing: -0.01em !important;
+}
+
+.site-title:hover {
+    color: var(--color-primary) !important;
+}
+
+.subhead a img {
+    height: 48px !important;
+    width: auto !important;
+}
+
+/* Navigation */
+#site-navigation .menu {
+    display: flex !important;
+    gap: var(--space-8) !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#site-navigation .menu > li > a {
+    font-family: var(--font-body) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 500 !important;
+    color: var(--color-gray-700) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    padding: var(--space-2) 0 !important;
+    border-bottom: 2px solid transparent !important;
+    transition: all var(--transition-fast) !important;
+}
+
+#site-navigation .menu > li > a:hover,
+#site-navigation .menu > li.current-menu-item > a {
+    color: var(--color-primary) !important;
+    border-bottom-color: var(--color-accent-coral) !important;
+}
+
+/* Dropdown menus */
+#site-navigation .sub-menu {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-gray-200) !important;
+    box-shadow: var(--shadow-lg) !important;
+    border-radius: 4px !important;
+    padding: var(--space-3) 0 !important;
+    min-width: 240px !important;
+}
+
+#site-navigation .sub-menu a {
+    padding: var(--space-3) var(--space-5) !important;
+    font-size: 0.875rem !important;
+    color: var(--color-gray-700) !important;
+}
+
+#site-navigation .sub-menu a:hover {
+    background: var(--color-gray-50) !important;
+    color: var(--color-primary) !important;
+}
+
+/* ==========================================================================
+   5. Homepage - Featured Stories
+   ========================================================================== */
+
+.featured-stories {
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Make featured stories full width */
+.featured-stories .grid-container {
+    max-width: none !important;
+    padding: 0 !important;
+}
+
+.featured-stories .grid-padding-collapse {
+    margin: 0 !important;
+}
+
+.featured-stories .block {
+    min-height: 480px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: flex-end !important;
+}
+
+/* Left banner - caption aligned to the right (toward midline) */
+.featured-stories .block:first-child {
+    justify-content: flex-end !important;
+}
+
+/* Right banner - caption aligned to the left (toward midline) */
+.featured-stories .block:last-child {
+    justify-content: flex-start !important;
+}
+
+.featured-stories .block::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%) !important;
+}
+
+.featured-stories .caption {
+    position: relative !important;
+    z-index: 1 !important;
+    padding: var(--space-8) !important;
+    color: var(--color-white) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.75rem !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    display: inline-block !important;
+}
+
+/* Left banner caption - right aligned text */
+.featured-stories .block:first-child .caption {
+    text-align: right !important;
+}
+
+/* Right banner caption - left aligned text */
+.featured-stories .block:last-child .caption {
+    text-align: left !important;
+}
+
+.featured-stories .caption img {
+    margin-left: var(--space-3) !important;
+    opacity: 0.8 !important;
+    transition: transform var(--transition-fast) !important;
+}
+
+.featured-stories .block:hover .caption img {
+    transform: translateX(4px) !important;
+}
+
+/* ==========================================================================
+   6. Homepage - Quote Section
+   ========================================================================== */
+
+section.quote {
+    background: var(--color-cream) !important;
+    padding: var(--space-12) var(--space-6) !important;
+    text-align: center !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+section.quote::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80px !important;
+    height: 4px !important;
+    background: var(--color-accent-coral) !important;
+}
+
+section.quote .quote-mark {
+    position: absolute !important;
+    top: 20px !important;
+    left: calc(50% - 480px) !important;
+    font-family: Georgia, serif !important;
+    font-size: 18rem !important;
+    line-height: 0.8 !important;
+    color: var(--color-accent-coral) !important;
+    margin: 0 !important;
+    opacity: 0.1 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+section.quote strong {
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.75rem !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+    line-height: 1.5 !important;
+    color: var(--color-gray-800) !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+/* ==========================================================================
+   7. Homepage - Stories Carousel
+   ========================================================================== */
+
+.stories-carousel {
+    padding: var(--space-12) 0 !important;
+    margin-bottom: 0 !important;
+    background: #eaf0f8 !important;
+}
+
+.stories-carousel .carousel-wrap {
+    background: transparent !important;
+    padding: 0 !important;
+    margin-top: var(--space-6) !important;
+}
+
+.stories-carousel .title-sep {
+    font-family: var(--font-heading) !important;
+    font-size: 2.5rem !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-10) !important;
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.stories-carousel .title-sep::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -var(--space-3) !important;
+    left: 0 !important;
+    width: 60px !important;
+    height: 3px !important;
+    background: var(--color-accent-yellow) !important;
+}
+
+/* Story cards container - equal height */
+.slick .slick-track {
+    display: flex !important;
+}
+
+.slick .slick-slide {
+    height: auto !important;
+    padding: 0 var(--space-3) !important;
+}
+
+.slick .slick-slide > div {
+    height: 100% !important;
+}
+
+/* Story cards */
+.orbit-figure {
+    background: var(--color-white) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all var(--transition-base) !important;
+    border: none !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+}
+
+.orbit-figure:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px) !important;
+}
+
+.orbit-figure .img-wrap {
+    position: relative !important;
+    overflow: visible !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Image container with overflow hidden for zoom effect */
+.orbit-figure .img-wrap a {
+    display: block !important;
+}
+
+.orbit-figure .img-wrap a > img {
+    display: block !important;
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    transition: transform var(--transition-base) !important;
+}
+
+.orbit-figure:hover .img-wrap a > img {
+    transform: scale(1.03) !important;
+}
+
+.orbit-figure .orbit-image {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    transition: transform var(--transition-base) !important;
+}
+
+.orbit-figure:hover .orbit-image {
+    transform: scale(1.03) !important;
+}
+
+/* Story card caption with title */
+.orbit-figure .orbit-caption {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+    padding: var(--space-4) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--color-primary) !important;
+    line-height: 1.4 !important;
+    background: var(--color-white) !important;
+}
+
+.orbit-figure .orbit-caption p {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    padding-top: var(--space-3) !important;
+}
+
+/* Story card title link */
+.orbit-figure .orbit-caption > a {
+    display: block !important;
+    color: var(--color-primary) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.orbit-figure .orbit-caption > a:hover {
+    color: var(--color-primary) !important;
+}
+
+/* Card footer with tag and read link */
+.orbit-figure .card-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: var(--space-3) var(--space-4) !important;
+    border-top: 1px solid var(--color-gray-100) !important;
+    background: var(--color-white) !important;
+}
+
+.orbit-figure .card-footer .theme-tag {
+    display: inline-block !important;
+    padding: 2px var(--space-2) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.5625rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-accent-teal) !important;
+    background: rgba(42, 157, 143, 0.1) !important;
+    border-radius: 100px !important;
+}
+
+.orbit-figure .card-footer .read-link {
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    color: var(--color-accent-coral) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-1) !important;
+}
+
+.orbit-figure .card-footer .read-link img {
+    width: 12px !important;
+    height: auto !important;
+}
+
+/* Hide old read-more if still present */
+.orbit-figure .read-more {
+    display: none !important;
+}
+
+/* ==========================================================================
+   8. Homepage - Links Section
+   ========================================================================== */
+
+.home-links {
+    background: var(--color-gray-50) !important;
+    padding: var(--space-16) 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.home-links h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 1.75rem !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.home-links p {
+    color: var(--color-gray-600) !important;
+    margin-bottom: var(--space-6) !important;
+    max-width: 400px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.home-links .button {
+    display: inline-block !important;
+    padding: var(--space-4) var(--space-8) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 600 !important;
+    color: var(--color-white) !important;
+    background: var(--color-primary) !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.home-links .button:hover {
+    background: var(--color-primary-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
+   9. Page Titles & Headers
+   ========================================================================== */
+
+.page-title {
+    height: auto !important;
+    position: static !important;
+    padding: var(--space-12) 0 var(--space-8) !important;
+    text-align: left !important;
+    max-width: none !important;
+    margin: 0 0 var(--space-8) !important;
+    background: transparent !important;
+}
+
+.page-title h1 {
+    position: static !important;
+    font-size: 2.75rem !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.page-title p {
+    font-size: 1.125rem !important;
+    color: var(--color-gray-600) !important;
+    max-width: 700px !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* General page content styles - only affect main content grid, not header */
+.page-about .page-content .grid-x,
+.page-learning .page-content .grid-x,
+.page-stories .page-content .grid-x {
+    margin-bottom: var(--space-8) !important;
+}
+
+.page-about .archive-info,
+.page-learning .archive-info {
+    padding: var(--space-6) !important;
+    background: var(--color-gray-50) !important;
+    border-radius: 8px !important;
+}
+
+.page-about .archive-info h3,
+.page-learning .archive-info h3 {
+    font-family: var(--font-body) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-gray-500) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.page-about .archive-info ul,
+.page-learning .archive-info ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.page-about .archive-info li,
+.page-learning .archive-info li {
+    padding: var(--space-2) 0 !important;
+    border-bottom: 1px solid var(--color-gray-200) !important;
+}
+
+.page-about .archive-info li:last-child,
+.page-learning .archive-info li:last-child {
+    border-bottom: none !important;
+}
+
+.page-about .archive-info a,
+.page-learning .archive-info a {
+    color: var(--color-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* Page content wrapper */
+.page-content {
+    padding-bottom: var(--space-16) !important;
+}
+
+/* ==========================================================================
+   10. Collection Filters & Grid
+   ========================================================================== */
+
+/* Collection Filters */
+.collection-filters {
+    margin: var(--space-6) 0 var(--space-8) !important;
+    padding: var(--space-4) var(--space-5) !important;
+    background: var(--color-gray-50) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--color-gray-200) !important;
+}
+
+.filter-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: var(--space-4) !important;
+}
+
+.filter-row h3 {
+    font-family: var(--font-body) !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: var(--color-gray-600) !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+}
+
+.filter-buttons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-2) !important;
+}
+
+.filter-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: var(--space-2) var(--space-4) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--color-gray-700) !important;
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-gray-200) !important;
+    border-radius: 100px !important;
+    cursor: pointer !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+}
+
+.filter-btn.active {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+
+.filter-status {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+    font-size: 0.875rem !important;
+    color: var(--color-gray-500) !important;
+    margin-left: auto !important;
+}
+
+.filter-status #filter-count {
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+}
+
+.clear-filters {
+    font-family: var(--font-body) !important;
+    font-size: 0.8125rem !important;
+    color: var(--color-accent-coral) !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+}
+
+.clear-filters:hover {
+    text-decoration: underline !important;
+}
+
+/* Collection Grid */
+.collection-grid {
+    margin-top: var(--space-8) !important;
+    padding-bottom: var(--space-16) !important;
+}
+
+.collection-card {
+    margin-bottom: var(--space-8) !important;
+}
+
+.collection-link {
+    display: block !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    background: var(--color-white) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all var(--transition-base) !important;
+}
+
+.collection-link:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px) !important;
+}
+
+.collection-thumb {
+    aspect-ratio: 4/3 !important;
+    overflow: hidden !important;
+    background: var(--color-gray-100) !important;
+}
+
+.collection-thumb img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform var(--transition-base) !important;
+}
+
+.collection-link:hover .collection-thumb img {
+    transform: scale(1.05) !important;
+}
+
+.collection-title {
+    padding: var(--space-5) !important;
+    margin: 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 500 !important;
+    color: var(--color-gray-800) !important;
+    line-height: 1.4 !important;
+}
+
+/* ==========================================================================
+   11. Collection Item (Single)
+   ========================================================================== */
+
+.single-collection .collection-item {
+    padding: var(--space-10) 0 !important;
+}
+
+.collection_gallery_bg {
+    background: var(--color-primary-dark) !important;
+    padding: var(--space-10) !important;
+    margin-bottom: var(--space-10) !important;
+}
+
+/* Collection gallery - let Slick handle the display */
+.collection_gallery {
+    /* Remove flex to allow Slick carousel to work */
+}
+
+.collection_gallery.slick-initialized {
+    display: block !important;
+}
+
+.collection_gallery .slick-list {
+    overflow: hidden !important;
+}
+
+.collection_gallery .slick-track {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.collection_gallery .slick-slide {
+    text-align: center !important;
+}
+
+/* Slick carousel arrows for collection */
+.collection_gallery_bg .slick-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.collection_gallery_bg .slick-arrow img {
+    width: 20px !important;
+    height: auto !important;
+}
+
+.collection_gallery_bg .orbit-previous {
+    left: var(--space-4) !important;
+}
+
+.collection_gallery_bg .orbit-next {
+    right: var(--space-4) !important;
+}
+
+.collection-figure {
+    margin: 0 !important;
+}
+
+.collection-img-wrap {
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.collection-img-wrap a {
+    display: block !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+/* Expand icon for lightbox - Collection */
+.collection-img-wrap a::before {
+    content: "" !important;
+    background: url(/assets/theme/img/expand.svg) no-repeat center !important;
+    background-size: contain !important;
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 10 !important;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)) !important;
+    opacity: 0.9 !important;
+    transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+    pointer-events: none !important;
+}
+
+.collection-img-wrap a:hover::before {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+.collection-img {
+    max-height: 500px !important;
+    width: auto !important;
+    display: block !important;
+}
+
+.single-collection h1 {
+    font-size: 2.75rem !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.single-collection .about {
+    padding: var(--space-8) !important;
+    background: var(--color-cream) !important;
+    border-radius: 8px !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.single-collection .about h3 {
+    font-family: var(--font-body) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: var(--color-gray-500) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.single-collection .archive-info {
+    padding: var(--space-6) !important;
+    background: var(--color-gray-50) !important;
+    border-radius: 8px !important;
+}
+
+.single-collection .archive-info h3 {
+    font-family: var(--font-body) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: var(--color-gray-500) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+/* ==========================================================================
+   12. Stories Grid
+   ========================================================================== */
+
+.stories-grid {
+    margin-top: var(--space-8) !important;
+    padding-bottom: var(--space-16) !important;
+}
+
+.story-card {
+    margin-bottom: var(--space-8) !important;
+}
+
+.story-link {
+    display: block !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    background: var(--color-white) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: all var(--transition-base) !important;
+}
+
+.story-link:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px) !important;
+}
+
+.story-thumb {
+    height: 240px !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-color: var(--color-gray-100) !important;
+}
+
+.story-thumb-placeholder {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent-blue) 100%) !important;
+}
+
+.story-content {
+    padding: var(--space-6) !important;
+}
+
+.story-title {
+    margin: 0 0 var(--space-3) 0 !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+    color: var(--color-primary) !important;
+    line-height: 1.3 !important;
+}
+
+.story-author {
+    margin: 0 0 var(--space-4) 0 !important;
+    font-size: 0.875rem !important;
+    color: var(--color-gray-500) !important;
+}
+
+.story-theme {
+    display: inline-block !important;
+    padding: var(--space-1) var(--space-3) !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-accent-teal) !important;
+    background: rgba(42, 157, 143, 0.1) !important;
+    border-radius: 100px !important;
+}
+
+/* ==========================================================================
+   13. Story (Single) - Creative Header Design
+   ========================================================================== */
+
+.page-single-story #storiesCont {
+    padding-bottom: var(--space-16) !important;
+}
+
+/* Creative Story Header */
+.story-header {
+    position: relative !important;
+    min-height: 70vh !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    overflow: hidden !important;
+    background: var(--color-primary-dark) !important;
+}
+
+.story-header--no-image {
+    min-height: 40vh !important;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%) !important;
+}
+
+/* Background image layer */
+.story-header__image {
+    position: absolute !important;
+    inset: 0 !important;
+    background-size: cover !important;
+    background-position: center !important;
+    z-index: 1 !important;
+}
+
+/* Overlay - lighter to show more of the image */
+.story-header__overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    ) !important;
+    z-index: 2 !important;
+}
+
+/* Decorative icon - large, grayscale, low opacity, off-page */
+.story-header__icon {
+    position: absolute !important;
+    right: -15% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 700px !important;
+    height: 700px !important;
+    background: url('/assets/theme/img/toynbee-icon.png') no-repeat center !important;
+    background-size: contain !important;
+    z-index: 3 !important;
+    opacity: 0.15 !important;
+    filter: grayscale(100%) brightness(2) !important;
+}
+
+.story-header--no-image .story-header__icon {
+    opacity: 0.12 !important;
+}
+
+/* Coral accent bar at bottom */
+.story-header::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 8px !important;
+    background: var(--color-accent-coral) !important;
+    z-index: 5 !important;
+}
+
+/* Content layer */
+.story-header__content {
+    position: relative !important;
+    z-index: 4 !important;
+    width: 100% !important;
+    padding: var(--space-16) 0 var(--space-12) !important;
+}
+
+.story-header__title {
+    color: var(--color-white) !important;
+    font-family: var(--font-heading) !important;
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+    max-width: 60% !important;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+
+/* Hide old header elements */
+.page-single-story .introBg,
+.page-single-story .absolute,
+.page-single-story #introText {
+    display: none !important;
+}
+
+.page-single-story .share {
+    padding-top: var(--space-8) !important;
+}
+
+.page-single-story .entry-content {
+    padding: var(--space-10) 0 !important;
+}
+
+.page-single-story .stories-title h2 {
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--color-gray-500) !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.page-single-story .stories-text {
+    font-size: 1.125rem !important;
+    line-height: 1.8 !important;
+}
+
+.page-single-story .stories-img {
+    margin-bottom: var(--space-6) !important;
+    position: relative !important;
+}
+
+.page-single-story .stories-img a {
+    display: block !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.page-single-story .stories-img img {
+    border-radius: 8px !important;
+    width: 100% !important;
+}
+
+/* Expand icon for lightbox - Stories */
+.page-single-story .stories-img a::before {
+    content: "" !important;
+    background: url(/assets/theme/img/expand.svg) no-repeat center !important;
+    background-size: contain !important;
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 10 !important;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)) !important;
+    opacity: 0.9 !important;
+    transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+    pointer-events: none !important;
+}
+
+.page-single-story .stories-img a:hover::before {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+.page-single-story .stories-img figcaption {
+    margin-top: var(--space-3) !important;
+    font-size: 0.875rem !important;
+    color: var(--color-gray-500) !important;
+    font-style: italic !important;
+}
+
+/* Related stories section */
+.page-single-story .home-popular {
+    background: var(--color-primary) !important;
+    padding: var(--space-12) 0 !important;
+}
+
+.page-single-story .home-popular h2 {
+    color: var(--color-white) !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.story-card-mini {
+    display: block !important;
+    padding: var(--space-4) var(--space-5) !important;
+    margin-bottom: var(--space-3) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 6px !important;
+    color: var(--color-white) !important;
+    text-decoration: none !important;
+    font-size: 0.9375rem !important;
+    transition: background var(--transition-fast) !important;
+}
+
+.story-card-mini:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: var(--color-white) !important;
+}
+
+/* ==========================================================================
+   14. Timeline - Staggered Left/Right Layout
+   ========================================================================== */
+
+/* Main timeline container */
+.timeline,
+.timeline.grid-x,
+.timeline.grid-x.grid-padding-x {
+    display: block !important;
+    background: var(--color-gray-50) !important;
+    padding: var(--space-12) var(--space-6) var(--space-12) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+}
+
+/* Hide original line element */
+/* Hide the original line element - we'll use pseudo-element on cell instead */
+.timeline > .line,
+.timeline .line {
+    display: none !important;
+}
+
+/* Center timeline line - positioned on the cell for correct alignment */
+.timeline > .cell::before,
+.timeline.grid-x > .cell::before {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 3px !important;
+    background: var(--color-gray-200) !important;
+    transform: translateX(-50%) !important;
+    z-index: 1 !important;
+}
+
+/* Timeline container - relative for line positioning */
+.timeline.grid-x {
+    position: relative !important;
+}
+
+/* Container for events */
+.timeline > .cell,
+.timeline.grid-x > .cell {
+    display: block !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    z-index: 2 !important;
+    padding: 0 var(--space-4) !important;
+    width: 100% !important;
+}
+
+/* Center vertical line */
+.timeline > .cell::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 0 !important;
+    bottom: 60px !important;
+    width: 3px !important;
+    background: var(--color-gray-300) !important;
+    z-index: 1 !important;
+}
+
+/* Each event wrapper */
+.timeline .event-wrap {
+    position: relative !important;
+    width: 50% !important;
+    padding: 0 var(--space-8) var(--space-10) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Left side events */
+.timeline .event-wrap.left {
+    float: left !important;
+    clear: left !important;
+    text-align: right !important;
+    padding-right: var(--space-10) !important;
+    padding-left: 0 !important;
+}
+
+/* Right side events */
+.timeline .event-wrap.right {
+    float: right !important;
+    clear: right !important;
+    text-align: left !important;
+    padding-left: var(--space-10) !important;
+    padding-right: 0 !important;
+}
+
+/* Dot marker on center line */
+.timeline .event-wrap::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 8px !important;
+    width: 18px !important;
+    height: 18px !important;
+    background: var(--color-accent-coral) !important;
+    border: 4px solid var(--color-gray-50) !important;
+    border-radius: 50% !important;
+    z-index: 2 !important;
+}
+
+.timeline .event-wrap.left::before {
+    right: -9px !important;
+    left: auto !important;
+}
+
+.timeline .event-wrap.right::before {
+    left: -9px !important;
+    right: auto !important;
+}
+
+/* Vertical spacing based on year gap */
+.timeline .event-wrap.gap-same {
+    margin-top: calc(-1 * var(--space-8)) !important; /* Overlap slightly for same year */
+    padding-top: 0 !important;
+}
+
+.timeline .event-wrap.gap-same .year {
+    visibility: hidden !important; /* Hide duplicate year pill */
+}
+
+.timeline .event-wrap.gap-small {
+    margin-top: var(--space-2) !important; /* 1-2 years: minimal gap */
+}
+
+.timeline .event-wrap.gap-medium {
+    margin-top: var(--space-6) !important; /* 3-5 years: moderate gap */
+}
+
+.timeline .event-wrap.gap-large {
+    margin-top: var(--space-10) !important; /* 6-10 years: larger gap */
+}
+
+.timeline .event-wrap.gap-xlarge {
+    margin-top: var(--space-16) !important; /* 10+ years: significant gap */
+}
+
+/* Year badge - inline, prominent */
+.timeline .year {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: var(--space-3) var(--space-6) !important;
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    border-radius: 50px !important;
+    margin-bottom: var(--space-5) !important;
+    line-height: 1 !important;
+    min-height: 56px !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Content card */
+.timeline .content-wrap {
+    background: var(--color-white) !important;
+    padding: var(--space-6) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-md) !important;
+    margin-top: 0 !important;
+    display: block !important;
+    position: relative !important;
+    text-align: left !important;
+}
+
+/* Month tag */
+.timeline .month {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 28px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1 !important;
+    color: var(--color-accent-teal) !important;
+    background: rgba(42, 157, 143, 0.1) !important;
+    padding: var(--space-1) var(--space-3) !important;
+    border-radius: 100px !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.timeline .event-wrap.left .month,
+.timeline .event-wrap.right .month {
+    position: static !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+}
+
+/* Timeline container - match grid-container width */
+.timeline.grid-x {
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding-left: var(--space-6) !important;
+    padding-right: var(--space-6) !important;
+}
+
+/* Event card - stacked layout */
+.timeline .event-wrap {
+    width: 48% !important;
+}
+
+.timeline .content-wrap {
+    display: block !important;
+    background: var(--color-white) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Month label */
+.timeline .content-wrap .month {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 28px !important;
+    padding: var(--space-1) var(--space-3) !important;
+    margin: var(--space-4) var(--space-5) var(--space-4) var(--space-5) !important;
+    font-size: 0.75rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1 !important;
+    color: var(--color-accent-coral) !important;
+    background: rgba(232, 90, 79, 0.1) !important;
+    border-radius: 100px !important;
+    font-weight: 600 !important;
+}
+
+/* Event image - full width, landscape aspect */
+.timeline .event-image {
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    float: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+}
+
+.timeline .event-image a {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+/* Expand icon for lightbox - Timeline */
+.timeline .event-image a::before {
+    content: "" !important;
+    background: url(/assets/theme/img/expand.svg) no-repeat center !important;
+    background-size: contain !important;
+    width: 24px !important;
+    height: 24px !important;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 10 !important;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)) !important;
+    opacity: 0.9 !important;
+    transition: opacity var(--transition-fast), transform var(--transition-fast) !important;
+    pointer-events: none !important;
+}
+
+.timeline .event-image a:hover::before {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+.timeline .event-image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 0 !important;
+}
+
+/* Event text */
+.timeline .event-text {
+    width: auto !important;
+    float: none !important;
+    padding: var(--space-5) !important;
+    clear: none !important;
+}
+
+.timeline .event-text h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.timeline .event-text p {
+    font-size: 0.9375rem !important;
+    line-height: 1.6 !important;
+}
+
+.timeline .event-text p[style*="margin:20px"] {
+    margin: var(--space-2) 0 var(--space-3) !important;
+    font-size: 0.8125rem !important;
+    color: var(--color-gray-500) !important;
+}
+
+/* Year pill alignment based on side */
+.timeline .event-wrap.left .year {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.timeline .event-wrap.right .year {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* Timeline page header spacing */
+.page-timeline .site-content {
+    margin-top: var(--space-8) !important;
+}
+
+.page-timeline .entry-header {
+    padding-top: 0 !important;
+}
+
+.page-timeline .entry-title {
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+/* Timeline intro text */
+.timeline-intro {
+    font-family: var(--font-body) !important;
+    font-size: 1.125rem !important;
+    line-height: 1.7 !important;
+    color: var(--color-gray-600) !important;
+    margin: var(--space-6) 0 !important;
+}
+
+.timeline .event-text h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 1.375rem !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-3) !important;
+}
+
+.timeline .event-text h3 strong {
+    font-weight: 500 !important;
+}
+
+.timeline .event-text p {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+    color: var(--color-gray-700) !important;
+    margin-bottom: var(--space-3) !important;
+    max-width: 100% !important;
+}
+
+.timeline .event-text p[style] {
+    font-size: 0.875rem !important;
+    color: var(--color-gray-500) !important;
+    font-style: italic !important;
+}
+
+/* Clear floats at end */
+.timeline > .cell::after {
+    content: '' !important;
+    display: table !important;
+    clear: both !important;
+}
+
+/* ==========================================================================
+   15. Explore Page
+   ========================================================================== */
+
+.explore-card {
+    display: block !important;
+    text-decoration: none !important;
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-gray-200) !important;
+    border-left: 4px solid var(--color-accent-blue) !important;
+    border-radius: 8px !important;
+    padding: var(--space-8) !important;
+    margin-bottom: var(--space-6) !important;
+    transition: all var(--transition-base) !important;
+}
+
+.explore-card:hover {
+    border-left-color: var(--color-accent-coral) !important;
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-4px) !important;
+}
+
+.explore-card h2 {
+    margin: 0 0 var(--space-4) 0 !important;
+    font-size: 1.5rem !important;
+    color: var(--color-primary) !important;
+}
+
+.explore-card p {
+    margin: 0 0 var(--space-5) 0 !important;
+    color: var(--color-gray-600) !important;
+    line-height: 1.6 !important;
+}
+
+.explore-link {
+    display: inline-block !important;
+    color: var(--color-accent-coral) !important;
+    font-weight: 600 !important;
+    font-size: 0.9375rem !important;
+}
+
+/* ==========================================================================
+   16. Tags
+   ========================================================================== */
+
+.tag-label,
+.theme-tag {
+    display: inline-block !important;
+    padding: var(--space-1) var(--space-3) !important;
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--color-accent-teal) !important;
+    background: rgba(42, 157, 143, 0.1) !important;
+    border-radius: 100px !important;
+    margin: var(--space-1) !important;
+}
+
+.single-tags ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-2) !important;
+}
+
+.single-tags li {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ==========================================================================
+   17. Footer
+   ========================================================================== */
+
+#main-footer {
+    background: var(--color-primary-dark) !important;
+    color: var(--color-gray-300) !important;
+    padding: var(--space-12) 0 var(--space-8) !important;
+    margin-top: 0 !important;
+}
+
+/* Lottery logo - make white */
+#main-footer .hlf-logo img {
+    filter: brightness(0) invert(1) !important;
+}
+
+#main-footer .address p {
+    font-size: 0.9375rem !important;
+    line-height: 1.8 !important;
+    color: var(--color-gray-400) !important;
+    margin-bottom: var(--space-6) !important;
+}
+
+#main-footer a {
+    color: var(--color-gray-300) !important;
+}
+
+#main-footer a:hover {
+    color: var(--color-white) !important;
+}
+
+#main-footer .contact p {
+    font-size: 0.875rem !important;
+    color: var(--color-gray-400) !important;
+}
+
+#main-footer .contact a {
+    color: var(--color-accent-blue) !important;
+}
+
+#main-footer .copy {
+    padding-top: var(--space-10) !important;
+    margin-top: var(--space-10) !important;
+    border-top: 1px solid var(--color-gray-700) !important;
+}
+
+#main-footer .copy p {
+    font-size: 0.8125rem !important;
+    color: var(--color-gray-500) !important;
+}
+
+/* ==========================================================================
+   18. Buttons
+   ========================================================================== */
+
+.button,
+button[type="submit"],
+input[type="submit"] {
+    display: inline-block !important;
+    padding: var(--space-4) var(--space-6) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9375rem !important;
+    font-weight: 600 !important;
+    color: var(--color-white) !important;
+    background: var(--color-primary) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: all var(--transition-fast) !important;
+    text-decoration: none !important;
+}
+
+.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background: var(--color-primary-dark) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-2px) !important;
+}
+
+.button.secondary {
+    background: transparent !important;
+    color: var(--color-primary) !important;
+    border: 2px solid var(--color-primary) !important;
+}
+
+.button.secondary:hover {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+
+/* ==========================================================================
+   19. Dark Background Exceptions
+   ========================================================================== */
+
+.cell.bar,
+.home-popular,
+.home-difference {
+    background: var(--color-primary) !important;
+    padding: var(--space-8) 0 !important;
+}
+
+/* Constrain bar content to match nav width */
+.cell.bar .grid-container,
+.cell.bar > .grid-container {
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--space-6) !important;
+}
+
+.cell.bar h2,
+.home-popular h2,
+.home-popular h3,
+.home-difference h2 {
+    color: var(--color-white) !important;
+    margin: 0 !important;
+    font-size: 1.5rem !important;
+}
+
+/* Remove floating arrow icon from bar */
+.cell.bar::after {
+    display: none !important;
+    content: none !important;
+}
+
+#accessMenu h3,
+#accessMenu h4 {
+    color: var(--color-white) !important;
+}
+
+#postNav {
+    background: var(--color-primary) !important;
+    padding: 0 !important;
+}
+
+#postNav span {
+    color: var(--color-white) !important;
+}
+
+/* ==========================================================================
+   20. Accessibility
+   ========================================================================== */
+
+#saveaccess {
+    background: transparent !important;
+    border: 2px solid var(--color-white) !important;
+    color: var(--color-white) !important;
+}
+
+#saveaccess:hover {
+    background: var(--color-white) !important;
+    color: var(--color-primary) !important;
+}
+
+/* Focus states */
+a:focus,
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid var(--color-accent-blue) !important;
+    outline-offset: 2px !important;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute !important;
+    left: -9999px !important;
+    z-index: 9999 !important;
+    padding: var(--space-4) var(--space-6) !important;
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+}
+
+.skip-link:focus {
+    left: var(--space-4) !important;
+    top: var(--space-4) !important;
+}
+
+/* ==========================================================================
+   21. Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    :root {
+        --space-16: 5rem;
+        --space-12: 4rem;
+        --space-10: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem !important;
+    }
+
+    h2 {
+        font-size: 2rem !important;
+    }
+
+    .page-title h1 {
+        font-size: 2.75rem !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    :root {
+        --space-16: 4rem;
+        --space-12: 3rem;
+        --space-10: 2.5rem;
+        --space-8: 2rem;
+    }
+
+    body {
+        font-size: 1rem !important;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    .page-title {
+        padding: var(--space-10) var(--space-4) var(--space-8) !important;
+    }
+
+    .page-title h1 {
+        font-size: 2.25rem !important;
+    }
+
+    .page-title p {
+        font-size: 1.0625rem !important;
+    }
+
+    .featured-stories .block {
+        min-height: 320px !important;
+    }
+
+    .featured-stories .caption {
+        font-size: 1.25rem !important;
+        padding: var(--space-6) !important;
+    }
+
+    section.quote {
+        padding: var(--space-10) var(--space-4) !important;
+    }
+
+    section.quote strong {
+        font-size: 1.25rem !important;
+    }
+
+    .grid-container {
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
+    }
+
+    #menuBar,
+    #menuBar.grid-container {
+        padding-left: var(--space-4) !important;
+        padding-right: var(--space-4) !important;
+    }
+
+    /* Story header mobile */
+    .story-header {
+        min-height: 60vh !important;
+    }
+
+    .story-header__title {
+        max-width: 100% !important;
+        font-size: 1.75rem !important;
+    }
+
+    .story-header__icon {
+        right: -25% !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 350px !important;
+        height: 350px !important;
+    }
+
+    .story-header__content {
+        padding: var(--space-10) 0 var(--space-8) !important;
+    }
+
+    #main-footer {
+        padding: var(--space-10) 0 var(--space-6) !important;
+        margin-top: var(--space-10) !important;
+    }
+
+    /* Timeline mobile - single column */
+    .timeline,
+    .timeline.grid-x {
+        padding: var(--space-8) var(--space-4) var(--space-8) !important;
+    }
+
+    .timeline > .cell,
+    .timeline.grid-x > .cell {
+        padding-left: 40px !important;
+        padding-right: 0 !important;
+    }
+
+    .timeline > .cell::before {
+        left: 10px !important;
+        transform: none !important;
+        width: 2px !important;
+        bottom: 40px !important;
+    }
+
+    .timeline .event-wrap,
+    .timeline .event-wrap.left,
+    .timeline .event-wrap.right {
+        width: 100% !important;
+        float: none !important;
+        clear: both !important;
+        text-align: left !important;
+        padding: 0 0 var(--space-8) 0 !important;
+    }
+
+    .timeline .event-wrap::before,
+    .timeline .event-wrap.left::before,
+    .timeline .event-wrap.right::before {
+        left: -40px !important;
+        right: auto !important;
+        width: 16px !important;
+        height: 16px !important;
+        border-width: 3px !important;
+    }
+
+    /* Timeline mobile adjustments */
+    .timeline .year {
+        font-size: 1.25rem !important;
+        min-height: 40px !important;
+    }
+
+    .timeline .event-text {
+        padding: var(--space-4) !important;
+    }
+
+    .timeline .event-text h3 {
+        font-size: 1.125rem !important;
+    }
+
+    .timeline .year {
+        font-size: 1.25rem !important;
+    }
+
+    .timeline .content-wrap {
+        padding: var(--space-5) !important;
+    }
+
+    .timeline .event-text h3 {
+        font-size: 1.125rem !important;
+    }
+}
+
+/* ==========================================================================
+   22. Breadcrumbs
+   ========================================================================== */
+
+.breadcrumbs-bar {
+    background: var(--color-gray-50) !important;
+    border-bottom: 1px solid var(--color-gray-200) !important;
+    padding: var(--space-3) 0 !important;
+}
+
+.breadcrumbs-bar .breadcrumbs {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+    font-size: 0.875rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.breadcrumbs-bar .breadcrumbs a {
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+    transition: color var(--transition-fast) !important;
+}
+
+.breadcrumbs-bar .breadcrumbs a:hover {
+    color: var(--color-primary-dark) !important;
+    text-decoration: underline !important;
+}
+
+.breadcrumbs-bar .breadcrumbs .separator {
+    display: flex !important;
+    align-items: center !important;
+    opacity: 0.5 !important;
+}
+
+.breadcrumbs-bar .breadcrumbs .separator img {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.breadcrumbs-bar .breadcrumbs .current {
+    color: var(--color-gray-600) !important;
+    font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   23. Page Sidebar
+   ========================================================================== */
+
+.page-sidebar {
+    padding-left: var(--space-8) !important;
+}
+
+.sidebar-section {
+    background: var(--color-gray-50) !important;
+    padding: var(--space-6) !important;
+    border-radius: 8px !important;
+    margin-bottom: var(--space-6) !important;
+}
+
+.sidebar-section:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sidebar-section h3 {
+    font-family: var(--font-body) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: var(--color-gray-500) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.sidebar-section p {
+    font-size: 0.9375rem !important;
+    margin-bottom: var(--space-3) !important;
+    line-height: 1.5 !important;
+}
+
+.sidebar-section p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sidebar-links {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sidebar-links li {
+    margin-bottom: var(--space-2) !important;
+}
+
+.sidebar-links li:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sidebar-links a {
+    color: var(--color-primary) !important;
+    text-decoration: none !important;
+    font-size: 0.9375rem !important;
+    display: flex !important;
+    align-items: center !important;
+    transition: color var(--transition-fast) !important;
+}
+
+.sidebar-links a:hover {
+    color: var(--color-primary-dark) !important;
+    text-decoration: underline !important;
+}
+
+/* Sidebar cards for featured links */
+.sidebar-card {
+    display: block !important;
+    background: var(--color-white) !important;
+    padding: var(--space-4) !important;
+    border-radius: 6px !important;
+    margin-bottom: var(--space-3) !important;
+    text-decoration: none !important;
+    border: 1px solid var(--color-gray-200) !important;
+    transition: all var(--transition-fast) !important;
+}
+
+.sidebar-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sidebar-card:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transform: translateY(-1px) !important;
+}
+
+.sidebar-card strong {
+    display: block !important;
+    color: var(--color-primary) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--space-1) !important;
+}
+
+.sidebar-card span {
+    display: block !important;
+    font-size: 0.875rem !important;
+    color: var(--color-gray-600) !important;
+}
+
+.sidebar-featured {
+    background: var(--color-primary) !important;
+}
+
+.sidebar-featured h3 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ==========================================================================
+   24. Lead Text
+   ========================================================================== */
+
+.lead,
+p.lead {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    color: var(--color-gray-700) !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.page-subtitle {
+    font-size: 1.125rem !important;
+    color: var(--color-gray-600) !important;
+    margin-top: var(--space-2) !important;
+    max-width: 600px !important;
+}
+
+/* ==========================================================================
+   25. Page Content Layout Alignment
+   ========================================================================== */
+
+/* Remove offsets for main content pages */
+.page-about .grid-container > .page-title,
+.page-explore .grid-container > .page-title,
+.page-learning .grid-container > .page-title,
+.page-stories .grid-container > .page-title {
+    padding-left: 0 !important;
+}
+
+/* Entry content within pages */
+.page-content .entry-content h2 {
+    margin-top: var(--space-10) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.page-content .entry-content h3 {
+    margin-top: var(--space-8) !important;
+    margin-bottom: var(--space-3) !important;
+    font-size: 1.25rem !important;
+}
+
+.page-content .entry-content h2:first-child,
+.page-content .entry-content h3:first-child {
+    margin-top: 0 !important;
+}
+
+.page-content .entry-content ul,
+.page-content .entry-content ol {
+    margin-bottom: var(--space-6) !important;
+    padding-left: var(--space-6) !important;
+}
+
+.page-content .entry-content li {
+    margin-bottom: var(--space-2) !important;
+}
+
+/* Sidebar responsive */
+@media screen and (max-width: 1024px) {
+    .page-sidebar {
+        padding-left: 0 !important;
+        margin-top: var(--space-10) !important;
+    }
+}
+
+/* ==========================================================================
+   26. Digital Tour / Panorama
+   ========================================================================== */
+
+.digital-tour {
+    background: var(--color-gray-50) !important;
+    padding: var(--space-12) 0 var(--space-16) !important;
+    margin-top: var(--space-12) !important;
+}
+
+.digital-tour .page-title {
+    padding-top: 0 !important;
+    margin-bottom: var(--space-8) !important;
+}
+
+.digital-tour .page-title h2 {
+    font-size: 2rem !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.pano-gallery {
+    max-width: 1000px !important;
+}
+
+.pano-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: var(--space-4) !important;
+    margin-bottom: var(--space-4) !important;
+    padding: var(--space-4) !important;
+    background: var(--color-white) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--color-gray-200) !important;
+}
+
+.pano-nav {
+    font-size: 0.9375rem !important;
+    color: var(--color-primary) !important;
+    cursor: pointer !important;
+    transition: color var(--transition-fast) !important;
+    min-width: 180px !important;
+}
+
+.pano-nav:empty {
+    visibility: hidden !important;
+}
+
+.pano-nav:hover {
+    color: var(--color-primary-dark) !important;
+    text-decoration: underline !important;
+}
+
+#left {
+    text-align: left !important;
+}
+
+#right {
+    text-align: right !important;
+}
+
+.pano-arrow {
+    font-weight: bold !important;
+}
+
+.pano-current {
+    font-weight: 600 !important;
+    color: var(--color-gray-800) !important;
+    text-align: center !important;
+    flex: 1 !important;
+}
+
+.pano-frame {
+    position: relative !important;
+    width: 100% !important;
+    padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+    background: var(--color-gray-200) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.pano-frame iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
+/* ==========================================================================
+   27. Share Modal
+   ========================================================================== */
+
+.reveal,
+.reveal.tiny {
+    border: none !important;
+    border-radius: 8px !important;
+    padding: var(--space-8) !important;
+    max-width: 400px !important;
+}
+
+.reveal h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.reveal .close-button {
+    color: var(--color-gray-500) !important;
+    font-size: 2rem !important;
+    top: var(--space-4) !important;
+    right: var(--space-4) !important;
+}
+
+.reveal .close-button:hover {
+    color: var(--color-gray-800) !important;
+}
+
+.social-share {
+    display: flex !important;
+    gap: var(--space-4) !important;
+}
+
+.social-share a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    color: var(--color-white) !important;
+    font-size: 1.25rem !important;
+    transition: transform var(--transition-fast), opacity var(--transition-fast) !important;
+}
+
+.social-share a:hover {
+    transform: scale(1.1) !important;
+    opacity: 0.9 !important;
+}
+
+.social-share .toynbee-facebook {
+    background: #1877f2 !important;
+}
+
+.social-share .toynbee-twitter {
+    background: #1da1f2 !important;
+}
+
+/* Share button styling */
+.share span {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+    cursor: pointer !important;
+    color: var(--color-primary) !important;
+    font-weight: 500 !important;
+    transition: color var(--transition-fast) !important;
+}
+
+.share span:hover {
+    color: var(--color-primary-dark) !important;
+}
+
+.share span img {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* ==========================================================================
+   28. Print
+   ========================================================================== */
+
+@media print {
+    body {
+        font-size: 12pt !important;
+        line-height: 1.5 !important;
+        color: #000 !important;
+        background: #fff !important;
+    }
+
+    #topBar,
+    #site-navigation,
+    .menu-toggle,
+    #accessMenu,
+    .share,
+    #postNav,
+    #main-footer {
+        display: none !important;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+        page-break-after: avoid !important;
+    }
+}

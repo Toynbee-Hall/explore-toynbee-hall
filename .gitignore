@@ -4,4 +4,6 @@ _site/
 *.log
 
 # Large assets - uploaded directly to server
-src/assets/
+src/assets/media/
+src/assets/Pano/
+src/assets/vendor/

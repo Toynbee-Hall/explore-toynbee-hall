@@ -1,10 +1,19 @@
 module.exports = function(eleventyConfig) {
-  // Assets are uploaded directly to server, not included in git
-  // Only copy assets if they exist locally (for development)
+  // Theme assets (CSS, JS, fonts) are in git and always copied
+  eleventyConfig.addPassthroughCopy("src/assets/theme");
+  eleventyConfig.addWatchTarget("src/assets/theme/css/");
+
+  // Large media assets are uploaded directly to server
+  // Only copy them if they exist locally (for development)
   const fs = require('fs');
-  if (fs.existsSync('src/assets')) {
-    eleventyConfig.addPassthroughCopy("src/assets");
-    eleventyConfig.addWatchTarget("src/assets/theme/css/");
+  if (fs.existsSync('src/assets/media')) {
+    eleventyConfig.addPassthroughCopy("src/assets/media");
+  }
+  if (fs.existsSync('src/assets/Pano')) {
+    eleventyConfig.addPassthroughCopy("src/assets/Pano");
+  }
+  if (fs.existsSync('src/assets/vendor')) {
+    eleventyConfig.addPassthroughCopy("src/assets/vendor");
   }
 
   // Add a filter to slugify strings (for tag URLs etc)
