@@ -1,0 +1,69 @@
+---
+layout: base.njk
+bodyClass: page-timeline
+---
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs-bar">
+    <div class="grid-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span class="separator"><img src="/assets/theme/img/chevron-lg.svg" alt=""/></span>
+            <a href="/explore/">Archive</a>
+            <span class="separator"><img src="/assets/theme/img/chevron-lg.svg" alt=""/></span>
+            <span class="current">Timeline</span>
+        </nav>
+    </div>
+</div>
+
+<div class="site-content grid-x">
+    <div class="cell">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-collapse">
+                <article class="cell page type-page status-publish has-post-thumbnail">
+                    <header class="entry-header">
+                        <figure class="feat-img">
+                            {% if featuredImage %}
+                            <img src="{{ featuredImage }}" alt="{{ title }}">
+                            {% endif %}
+                        </figure>
+                        <h1 class="entry-title">{{ title }}</h1>
+                    </header>
+
+                    <div class="entry-content">
+                        {{ content | safe }}
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-x grid-padding-x timeline">
+    <div class="line"></div>
+    <div class="cell">
+        {% for event in timeline | timelineWithLayout %}
+        <div class="event-wrap {{ event.position }} {{ event.gapClass }}">
+            <div class="year">{{ event.year }}</div>
+
+            <div class="content-wrap">
+                <div class="month">{{ event.month }}</div>
+
+                {% if event.image %}
+                <div class="event-image">
+                    <a href="{{ event.image }}">
+                        <img src="{{ event.image }}" alt="{{ event.title }}" loading="lazy">
+                    </a>
+                </div>
+                {% endif %}
+
+                <div class="event-text">
+                    <h3><strong>{{ event.title }}</strong></h3>
+                    <p style="margin:20px 0">{{ event.date }}</p>
+                    <p>{{ event.description | replace("\n\n", "</p><p>") | safe }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,42 @@
+---
+layout: collection-item.njk
+title: "The Toynbee Magazine"
+slug: "the-toynbee-magazine"
+catalogueRef: "LMA_4683_SPE_01_06_001"
+images:
+  - "/assets/media/LMA_4683_SPE_01_06_001_001.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_002.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_003.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_004.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_005.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_006.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_007.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_008.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_009.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_010.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_011.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_012.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_013.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_014.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_015.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_016.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_017.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_018.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_019.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_020.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_021.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_022.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_023.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_024.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_025.jpg"
+  - "/assets/media/LMA_4683_SPE_01_06_001_026.jpg"
+tags:
+  - "1910s"
+  - "illustration"
+  - "poetry"
+  - "students"
+  - "Toynbee Magazine"
+  - "WWI"
+---
+
+No description available.

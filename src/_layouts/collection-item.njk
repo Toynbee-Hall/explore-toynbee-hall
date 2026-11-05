@@ -1,0 +1,71 @@
+---
+layout: base.njk
+bodyClass: single-collection
+---
+
+<div id="content" class="site-content grid-x">
+    <div class="cell">
+        <div class="collection-item">
+            <div class="grid-x grid-padding-collapse">
+                <article class="cell collection type-collection status-publish has-post-thumbnail">
+                    <div class="grid-x grid-padding-collapse">
+                        <div class="cell">
+
+                            <!-- Image Gallery -->
+                            <div class="grid-container">
+                                <div class="grid-x grid-margin-x collection_gallery_bg">
+                                    <div class="cell collection_gallery">
+                                        {% for image in images %}
+                                        <figure class="collection-figure">
+                                            <div class="collection-img-wrap">
+                                                <a href="{{ image }}">
+                                                    <img class="collection-img" data-lazy="{{ image }}" src="{{ image }}" alt="{{ title }}">
+                                                </a>
+                                            </div>
+                                        </figure>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="grid-container">
+                                <div class="grid-x grid-margin-x">
+                                    <div class="cell large-9">
+                                        <h1>{{ title }}</h1>
+
+                                        <div class="about">
+                                            <h3>About this</h3>
+                                            {{ content | safe }}
+                                        </div>
+                                    </div>
+
+                                    <div class="cell large-3">
+                                        <div class="archive-info">
+                                            <h3>Archive information</h3>
+                                            {% if catalogueRef %}
+                                            <p>[Catalogue reference]: {{ catalogueRef }}</p>
+                                            {% endif %}
+
+                                            {% if tags.length %}
+                                            <div class="single-tags">
+                                                <h3>Themes</h3>
+                                                <ul>
+                                                    {% for tag in tags %}
+                                                    <li><span class="tag-label">{{ tag }}</span></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+---
+layout: collection-item.njk
+title: "Childrens Country Holiday Fund: children about to go on holiday from Toynbee Hall"
+slug: "childrens-country-holiday-fund-children-about-to-go-on-holiday-from-toynbee-hall"
+catalogueRef: "LMA_4683_IMG_04_025"
+images:
+  - "/assets/media/LMA_4683_IMG_04_025_001.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_002.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_003.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_004.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_005.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_006.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_007.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_008.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_009.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_010.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_011.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_012.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_013.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_014.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_015.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_016.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_017.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_018.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_019.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_020.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_021.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_022.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_023.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_024.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_025.jpg"
+  - "/assets/media/LMA_4683_IMG_04_025_026.jpg"
+tags:
+  - "1970s"
+  - "1980s"
+  - "children"
+  - "Children's Country Holiday Fund"
+---
+
+No description available.

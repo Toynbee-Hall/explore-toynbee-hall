@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+
+    <title>{% if title %}{{ title }} - {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ description | default(site.description) }}">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/media/cropped-toynbeefav-32x32.jpg" sizes="32x32">
+    <link rel="icon" href="/assets/media/cropped-toynbeefav-192x192.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" href="/assets/media/cropped-toynbeefav-180x180.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/assets/theme/foundation/css/foundation.min__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/foundation/css/app__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/foundation/css/motionui.min__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/style__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/css/main__v-6.9.10-b37e6f.css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/assets/theme/slick/slick__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/css/lightgallery__v-6.9.10-b37e6f.css">
+
+    <!-- Accessibility CSS -->
+    <link rel="stylesheet" href="/assets/theme/css/access/default_contrast__v-6.9.10-b37e6f.css">
+    <link rel="stylesheet" href="/assets/theme/css/access/default_font__v-6.9.10-b37e6f.css">
+
+    <!-- Redesign CSS (overrides) -->
+    <link rel="stylesheet" href="/assets/theme/css/redesign.css">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body class="{{ bodyClass | default('') }}">
+    <div id="page" class="site">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+        {% include "partials/header.njk" %}
+
+        <main id="content">
+            {{ content | safe }}
+        </main>
+
+        {% include "partials/footer.njk" %}
+    </div>
+
+    <!-- Core Scripts -->
+    <script src="/assets/vendor/libraries/js/jquery/jquery.min__v-3.7.1-c8a53a.js"></script>
+    <script src="/assets/theme/foundation/js/vendor/foundation.min__v-6.9.10-b37e6f.js"></script>
+    <script src="/assets/theme/slick/slick.min__v-1-58efcb.js"></script>
+    <script src="/assets/theme/js/lightgallery-all.min__v-1-58efcb.js"></script>
+    <script src="/assets/theme/js/custom__v-1-58efcb.js"></script>
+
+    <!-- Accessibility Scripts -->
+    <script src="/assets/vendor/stylesheet-switcher/js/js.cookie__v-6.9.10-b37e6f.js"></script>
+    <script>
+        var wp_user_stylesheets = {
+            "s0": {
+                "default": "1",
+                "0": {"file": "/assets/theme/css/access/low_contrast.css"},
+                "1": {"file": "Reset"},
+                "2": {"file": "/assets/theme/css/access/high_contrast.css"}
+            },
+            "s1": {
+                "default": "0",
+                "0": {"file": "Reset"},
+                "1": {"file": "/assets/theme/css/access/medium_font.css"},
+                "2": {"file": "/assets/theme/css/access/large_font.css"}
+            }
+        };
+    </script>
+    <script src="/assets/vendor/stylesheet-switcher/js/wp_user_stylesheet_switcher__v-6.9.10-b37e6f.js"></script>
+    <script src="/assets/vendor/stylesheet-switcher/js/use_cookie_when_ready__v-6.9.10-b37e6f.js"></script>
+
+    <!-- Initialize Foundation -->
+    <script>
+        $ = jQuery;
+        $(document).foundation();
+    </script>
+
+    {% if bodyClass == 'page-about' %}
+    <script src="/assets/theme/js/panorama-source-switch.js"></script>
+    {% endif %}
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

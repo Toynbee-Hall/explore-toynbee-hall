@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs-bar">
+    <div class="grid-container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span class="separator"><img src="/assets/theme/img/chevron-lg.svg" alt=""/></span>
+            <span class="current">{{ title }}</span>
+        </nav>
+    </div>
+</div>
+
+<div class="page-content">
+    {{ content | safe }}
+</div>

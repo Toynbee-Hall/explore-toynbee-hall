@@ -1,0 +1,107 @@
+---
+layout: collection-index.njk
+title: Collection
+bodyClass: page-collection archive-collection
+permalink: /collection/
+---
+
+<div class="grid-container">
+    <div class="page-title">
+        <h1>Browse the Collection</h1>
+        <p>Explore over {{ collections.collection.length }} items from the Toynbee Hall archive, including photographs, documents, and historical records spanning over 130 years.</p>
+    </div>
+
+    {# Gather decade tags #}
+    {% set decadeTags = [] %}
+    {% for item in collections.collection %}
+        {% if item.data.tags %}
+            {% for tag in item.data.tags %}
+                {% if tag | isDecade and tag not in decadeTags %}
+                    {% set decadeTags = (decadeTags.push(tag), decadeTags) %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+    <!-- Decade Filter -->
+    <div class="collection-filters">
+        <div class="filter-row">
+            <h3>Filter by Decade</h3>
+            <div class="filter-buttons" id="decade-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                {% for tag in decadeTags | sort %}
+                <button class="filter-btn" data-filter="{{ tag | slugify }}">{{ tag }}</button>
+                {% endfor %}
+            </div>
+            <div class="filter-status">
+                <span id="filter-count">{{ collections.collection.length }}</span> items
+                <button id="clear-filters" class="clear-filters" style="display: none;">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-x grid-margin-x small-up-2 medium-up-3 large-up-4 collection-grid" id="collection-grid">
+        {% for item in collections.collection | sort(attribute='data.title') %}
+        <div class="cell collection-card" data-tags="{% for tag in item.data.tags %}{{ tag | slugify }} {% endfor %}">
+            <a href="/collection/{{ item.data.slug }}/" class="collection-link">
+                {% if item.data.images and item.data.images.length > 0 %}
+                <div class="collection-thumb">
+                    <img src="{{ item.data.images[0] }}" alt="{{ item.data.title }}" loading="lazy">
+                </div>
+                {% else %}
+                <div class="collection-thumb collection-thumb-placeholder">
+                    <span>No image</span>
+                </div>
+                {% endif %}
+                <h3 class="collection-title">{{ item.data.title }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.collection-card');
+    const filterCount = document.getElementById('filter-count');
+    const clearBtn = document.getElementById('clear-filters');
+    let activeDecade = 'all';
+
+    function filterCards() {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const tags = card.dataset.tags || '';
+            const matches = activeDecade === 'all' || tags.includes(activeDecade);
+
+            if (matches) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        filterCount.textContent = visibleCount;
+        clearBtn.style.display = activeDecade !== 'all' ? 'inline-block' : 'none';
+    }
+
+    // Decade filter buttons
+    document.querySelectorAll('#decade-filters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#decade-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            activeDecade = this.dataset.filter;
+            filterCards();
+        });
+    });
+
+    // Clear filters
+    clearBtn.addEventListener('click', function() {
+        activeDecade = 'all';
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('#decade-filters .filter-btn[data-filter="all"]').classList.add('active');
+        filterCards();
+    });
+});
+</script>

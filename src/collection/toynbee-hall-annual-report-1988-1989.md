@@ -1,0 +1,41 @@
+---
+layout: collection-item.njk
+title: "Toynbee Hall Annual Report 1988 – 1989"
+slug: "toynbee-hall-annual-report-1988-1989"
+catalogueRef: "LMA_4683_SPE_01_01_061"
+images:
+  - "/assets/media/LMA_4683_SPE_01_01_061_001.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_002.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_003.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_004.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_005.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_006.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_007.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_008.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_009.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_010.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_011.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_012.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_013.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_014.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_015.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_016.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_017.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_018.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_019.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_020.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_021.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_022.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_023.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_024.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_025.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_026.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_027.jpg"
+  - "/assets/media/LMA_4683_SPE_01_01_061_028.jpg"
+tags:
+  - "1980s"
+  - "Islam"
+  - "Williams"
+---
+
+Contains a report on Toynbee Training, a black and white phototgraph of the old library and old posters and a message on Islamic resurgence from the Chief Executive Alan Lee Williams. 1 volume

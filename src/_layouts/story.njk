@@ -1,0 +1,110 @@
+---
+layout: base.njk
+bodyClass: page-single-story
+---
+
+<div id="content" class="site-content grid-x">
+    <article id="storiesCont" class="cell stories">
+        {% if featuredImage %}
+        <header class="story-header">
+            <div class="story-header__image" style="background-image: url('{{ featuredImage }}')"></div>
+            <div class="story-header__overlay"></div>
+            <div class="story-header__icon"></div>
+            <div class="story-header__content">
+                <div class="grid-container">
+                    <h1 class="story-header__title">{{ title }}</h1>
+                </div>
+            </div>
+        </header>
+        {% else %}
+        <header class="story-header story-header--no-image">
+            <div class="story-header__icon"></div>
+            <div class="story-header__content">
+                <div class="grid-container">
+                    <h1 class="story-header__title">{{ title }}</h1>
+                </div>
+            </div>
+        </header>
+        {% endif %}
+
+        <div class="grid-container">
+            <div class="grid-x grid-padding-collapse">
+                <div class="share cell medium-2 large-2">
+                    <span data-open="shareModal"><img src="/assets/theme/img/share.svg" alt="Share"/>Share this page</span>
+
+                    <!-- Share Modal -->
+                    <div class="tiny reveal" id="shareModal" data-reveal>
+                        <h2>Share this page</h2>
+                        <p style="margin-bottom: 2.2rem;">Share '{{ title }}' via social media.</p>
+                        <div class="social-share">
+                            <a class="toynbee-link icon-sm toynbee-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | urlencode }}" target="_blank" title="Share on Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a class="toynbee-link icon-sm toynbee-twitter" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&amp;url={{ page.url | urlencode }}&amp;via=toynbeehall" title="Share on Twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="entry-content cell large-8">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell stories-title small-12">
+                            {% if author %}
+                            <h2>By {{ author }}</h2>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell large-6 left-column">
+                            <div class="stories-text">
+                                {{ content | safe }}
+                            </div>
+                        </div>
+
+                        <div class="cell large-6 right-column">
+                            {% for image in images %}
+                            <div class="stories-img">
+                                <a href="{{ image.src }}">
+                                    <img src="{{ image.src }}" alt="{{ image.alt | default(title) }}" loading="lazy">
+                                </a>
+                                {% if image.caption %}
+                                <figcaption>{{ image.caption }}</figcaption>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Popular themes -->
+    <section class="home-popular cell">
+        <div class="grid-container">
+            <div class="grid-x">
+                <div class="cell medium-11 medium-offset-1 large-11 large-offset-1">
+                    <h2>More Stories</h2>
+                </div>
+                <div class="cell medium-10 medium-offset-1 large-9 large-offset-2">
+                    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+                        {% for story in collections.stories | reverse %}
+                        {% if story.data.slug != slug %}
+                        <div class="cell">
+                            <a href="/stories/{{ story.data.slug }}/" class="story-card-mini">
+                                {{ story.data.title }}
+                            </a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

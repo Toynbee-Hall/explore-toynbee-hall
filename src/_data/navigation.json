@@ -1,0 +1,16 @@
+{
+  "main": [
+    { "title": "Home", "url": "/" },
+    { "title": "About", "url": "/about/" },
+    {
+      "title": "Archive",
+      "url": "/explore/",
+      "children": [
+        { "title": "The History of Toynbee Hall", "url": "/explore/the-history-of-toynbee-hall-a-timeline/" },
+        { "title": "Collection", "url": "/collection/" }
+      ]
+    },
+    { "title": "Stories", "url": "/stories/" },
+    { "title": "Learning", "url": "/learning/" }
+  ]
+}

@@ -1,0 +1,40 @@
+---
+layout: collection-item.njk
+title: "Building a Future, report by Alan Prescott"
+slug: "building-a-future-report-by-alan-prescott"
+catalogueRef: "LMA_4683_CEN_02_08_005"
+images:
+  - "/assets/media/LMA_4683_CEN_02_08_005_001.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_002.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_003.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_004.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_005.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_006.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_007.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_008.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_009.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_010.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_011.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_012.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_013.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_014.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_015.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_016.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_017.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_018.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_019.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_020.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_021.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_022.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_023.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_024.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_025.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_026.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_027.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_028.jpg"
+  - "/assets/media/LMA_4683_CEN_02_08_005_029.jpg"
+tags:
+  - "Alan Lee Williams"
+---
+
+No description available.

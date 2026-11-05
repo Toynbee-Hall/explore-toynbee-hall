@@ -1,0 +1,109 @@
+---
+layout: page.njk
+title: Stories
+bodyClass: page-stories archive-stories
+permalink: /stories/
+---
+
+<div class="grid-container">
+    <div class="page-title">
+        <h1>Stories</h1>
+        <p class="page-subtitle">Discover the people and events that shaped over 130 years of Toynbee Hall's history.</p>
+    </div>
+
+    {# Gather unique themes #}
+    {% set themes = [] %}
+    {% for story in collections.stories %}
+        {% if story.data.theme and story.data.theme not in themes %}
+            {% set themes = (themes.push(story.data.theme), themes) %}
+        {% endif %}
+    {% endfor %}
+
+    <!-- Theme Filter -->
+    <div class="collection-filters">
+        <div class="filter-row">
+            <h3>Filter by Theme</h3>
+            <div class="filter-buttons" id="theme-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                {% for theme in themes | sort %}
+                <button class="filter-btn" data-filter="{{ theme | slugify }}">{{ theme }}</button>
+                {% endfor %}
+            </div>
+            <div class="filter-status">
+                <span id="filter-count">{{ collections.stories | length }}</span> stories
+                <button id="clear-filters" class="clear-filters" style="display: none;">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3 stories-grid" id="stories-grid">
+        {% for story in collections.stories | sort(false, false, 'data.title') %}
+        <div class="cell story-card" data-theme="{{ story.data.theme | slugify }}">
+            <a href="/stories/{{ story.data.slug }}/" class="story-link">
+                {% if story.data.featuredImage %}
+                <div class="story-thumb" style="background-image: url('{{ story.data.featuredImage }}');">
+                </div>
+                {% else %}
+                <div class="story-thumb story-thumb-placeholder">
+                </div>
+                {% endif %}
+                <div class="story-content">
+                    <h3 class="story-title">{{ story.data.title }}</h3>
+                    {% if story.data.author %}
+                    <p class="story-author">By {{ story.data.author }}</p>
+                    {% endif %}
+                    {% if story.data.theme %}
+                    <span class="story-theme">{{ story.data.theme }}</span>
+                    {% endif %}
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.story-card');
+    const filterCount = document.getElementById('filter-count');
+    const clearBtn = document.getElementById('clear-filters');
+    let activeTheme = 'all';
+
+    function filterCards() {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const theme = card.dataset.theme || '';
+            const matches = activeTheme === 'all' || theme === activeTheme;
+
+            if (matches) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        filterCount.textContent = visibleCount;
+        clearBtn.style.display = activeTheme !== 'all' ? 'inline-block' : 'none';
+    }
+
+    // Theme filter buttons
+    document.querySelectorAll('#theme-filters .filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('#theme-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            activeTheme = this.dataset.filter;
+            filterCards();
+        });
+    });
+
+    // Clear filters
+    clearBtn.addEventListener('click', function() {
+        activeTheme = 'all';
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('#theme-filters .filter-btn[data-filter="all"]').classList.add('active');
+        filterCards();
+    });
+});
+</script>

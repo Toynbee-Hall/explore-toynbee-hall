@@ -1,0 +1,98 @@
+---
+layout: page.njk
+title: About
+bodyClass: page-about
+---
+
+<div class="grid-container">
+    <div class="page-title">
+        <h1>About</h1>
+        <p class="page-subtitle">Welcome to the Toynbee Hall digital archive - 135 years of social history at your fingertips.</p>
+    </div>
+
+    <div class="grid-x grid-margin-x">
+        <div class="cell large-8">
+            <article class="entry-content">
+                <p class="lead">From 2016-2020, Toynbee Hall underwent a major restoration of its historic hall and estate. <em>Revealing Social Reform, Renewing Social Action</em> was a four year plan which led to Toynbee Hall's heritage, and that of the East End, firmly embedded in our community work.</p>
+
+                <p>We want to showcase landmark stories of reform and social action from Toynbee Hall and use them to inspire people who are facing similar hardships today, and to find new solutions to social problems.</p>
+
+                <p>As part of this project, funded by the Heritage Lottery Fund, we have been able to launch our digital archive. This site enables us to share stories from Toynbee Hall's past, about the influential people who have passed through our doors and the central role our local community has played in our history.</p>
+
+                <p>The digital archive has been created with the help of London Metropolitan Archives and the hard work of a dedicated group of volunteers. The website has been created by <a href="https://surfaceimpression.digital/">Surface Impression</a>.</p>
+
+                <h3>How to search the archive</h3>
+
+                <p>To search the digital archive, go to the section called 'Collection' under the header 'Archive'. From here use the search box or the tags to search and navigate the collection.</p>
+
+                <p>To search the physical archive, you will need to visit the <a href="https://www.cityoflondon.gov.uk/lma" target="_blank" rel="noopener noreferrer">London Metropolitan Archive</a>. All of Toynbee Hall's archive is now there, along with the Samuel and Henrietta Barnett's personal archives. You can search the archive <a href="http://search.lma.gov.uk">here</a>. Toynbee Hall's archive is split into 3 sections: A/TOY, ACC/2486 and the most recent deposit LMA/4683.</p>
+
+                <h3>Toynbee Hall Today</h3>
+
+                <p>Toynbee Hall continues to tackle the causes and impacts of inequality here in East London, and further afield. We offer high quality, timely services, informed and shaped by the experiences of the people we work with.</p>
+
+                <p>Our advice services, youth projects, services for older people and our financial and social policy work are all geared towards supporting members of our community, not only in times of crisis but on a longer term basis, by providing them with the skills and support they need to access new opportunities. <a href="http://www.toynbeehall.org.uk" target="_blank" rel="noopener noreferrer">Find out more about our work today</a>.</p>
+
+                <h3>Our building</h3>
+
+                <p>After significant restoration, our Grade II listed building is now open and includes a free permanent exhibition, <em>Toynbee Hall; a Powerhouse for Social Change.</em> Please take a look round and see for yourself the setting which inspired some of the greatest social reformers of the modern age.</p>
+            </article>
+        </div>
+
+        <aside class="cell large-4 page-sidebar">
+            <div class="sidebar-section sidebar-featured">
+                <h3>Explore</h3>
+                <a href="/explore/the-history-of-toynbee-hall-a-timeline/" class="sidebar-card">
+                    <strong>Timeline</strong>
+                    <span>Key events from 1884 to present</span>
+                </a>
+                <a href="/collection/" class="sidebar-card">
+                    <strong>Collection</strong>
+                    <span>Browse {{ collections.collection.length }} archive items</span>
+                </a>
+                <a href="/stories/" class="sidebar-card">
+                    <strong>Stories</strong>
+                    <span>People who shaped reform</span>
+                </a>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Policies</h3>
+                <p><a href="/toynbee-hall-digital-archive-take-down-policy/">Take Down Policy</a></p>
+                <p><a href="/accessing-this-website/">Accessibility</a></p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <p>Archive enquiries:<br>
+                <a href="mailto:archive@toynbeehall.org.uk">archive@toynbeehall.org.uk</a></p>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<!-- Digital Tour -->
+<section class="digital-tour">
+    <div class="grid-container">
+        <div class="page-title">
+            <h2>Digital Tour</h2>
+            <p class="page-subtitle">Explore our Grade II listed building with a 360° virtual tour.</p>
+        </div>
+
+        <div class="pano-gallery" id="pano-gallery">
+            <div class="pano-controls">
+                <div class="pano-nav" id="left"></div>
+                <div class="pano-current" id="current">Currently viewing:</div>
+                <div class="pano-nav" id="right"></div>
+            </div>
+            <div class="pano-frame">
+                <iframe id="iframe-pano"
+                    title="360 Virtual Tour of Toynbee Hall"
+                    src=""
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+

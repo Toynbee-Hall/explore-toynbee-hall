@@ -1,0 +1,43 @@
+---
+layout: collection-item.njk
+title: "The Diaries of Billie Dorothy Didsbury Volume 2"
+slug: "the-diaries-of-billie-dorothy-didsbury-volume-2"
+catalogueRef: "LMA_4683_EXT_01_013_02"
+images:
+  - "/assets/media/LMA_4683_EXT_01_013_02_001.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_002.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_003.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_004.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_005.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_006.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_007.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_008.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_009.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_010.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_011.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_012.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_013.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_014.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_015.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_016.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_017.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_018.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_019.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_020.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_021.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_022.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_023.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_024.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_025.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_026.jpg"
+  - "/assets/media/LMA_4683_EXT_01_013_02_027.jpg"
+tags:
+  - "1940s"
+  - "Citizens Advice Bureau"
+  - "Didsbury"
+  - "Gurney"
+  - "Juvenile Court"
+  - "WWII"
+---
+
+No description available.

@@ -1,0 +1,41 @@
+---
+layout: collection-item.njk
+title: "The Toynbee Journal No. 6"
+slug: "the-toynbee-journal-no-6"
+catalogueRef: "LMA_4683_SPE_01_08_006"
+images:
+  - "/assets/media/LMA_4683_SPE_01_08_006_001-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_002-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_003-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_004-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_005-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_006-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_007-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_008-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_009-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_010-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_011-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_012-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_013-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_014-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_015-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_016-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_017-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_018-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_019-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_020-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_021-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_022-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_023-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_024-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_025-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_026-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_027-150x150.jpg"
+  - "/assets/media/LMA_4683_SPE_01_08_006_028-150x150.jpg"
+tags:
+  - "2000s"
+  - "lectures"
+  - "magazine"
+---
+
+Contains articles by Kate Bradley, Ed Mayo and John Egan. 1 volume

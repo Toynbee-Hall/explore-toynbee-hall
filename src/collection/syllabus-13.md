@@ -1,0 +1,42 @@
+---
+layout: collection-item.njk
+title: "Syllabus Jan 1955 to Dec 1956"
+slug: "syllabus-13"
+catalogueRef: "LMA_4683_DEP_01_003_016"
+images:
+  - "/assets/media/LMA_4683_DEP_01_003_016_003.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_002.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_004.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_005.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_006.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_007.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_008.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_009.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_010.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_011.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_012.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_013.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_014.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_015.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_016.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_017.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_018.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_001.jpg"
+  - "/assets/media/LMA_4683_DEP_01_003_016_019.jpg"
+tags:
+  - "1950s"
+  - "art"
+  - "classes"
+  - "clubs"
+  - "drama"
+  - "Education"
+  - "Music"
+  - "Nightingale"
+  - "Scouts"
+  - "societies"
+  - "syllabus"
+  - "theatre"
+  - "University Settlement"
+---
+
+No description available.

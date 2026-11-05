@@ -1,0 +1,4 @@
+{
+  "tags": "stories",
+  "permalink": "/stories/{{ slug }}/index.html"
+}
