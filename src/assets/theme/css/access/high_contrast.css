@@ -1,0 +1,85 @@
+/**
+ * High Contrast Accessibility Stylesheet
+ * Maximizes contrast for users with visual impairments
+ */
+
+body {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+}
+
+a {
+    color: #0000cc !important;
+    text-decoration: underline !important;
+}
+
+a:hover {
+    color: #000066 !important;
+}
+
+a:visited {
+    color: #551a8b !important;
+}
+
+#topBar {
+    background: #000033 !important;
+}
+
+#topBar .access {
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+#menuBar {
+    background: #ffffff !important;
+    border-bottom: 3px solid #000000 !important;
+}
+
+.site-title {
+    color: #000000 !important;
+}
+
+#primary-menu a {
+    color: #000000 !important;
+}
+
+#primary-menu a:hover {
+    text-decoration: underline !important;
+}
+
+#main-footer {
+    background: #000033 !important;
+    color: #ffffff !important;
+}
+
+#main-footer a {
+    color: #99ccff !important;
+}
+
+.button,
+button,
+input[type="submit"] {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #000000 !important;
+}
+
+.button:hover,
+button:hover,
+input[type="submit"]:hover {
+    background: #333333 !important;
+}
+
+img {
+    border: 1px solid #000000 !important;
+}
+
+/* Ensure focus states are visible */
+*:focus {
+    outline: 3px solid #0000cc !important;
+    outline-offset: 2px !important;
+}

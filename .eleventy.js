@@ -14,6 +14,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("src/assets/Pano");
   }
 
+  // Dev server: serve passthrough files straight from src instead of copying
+  // them (media is ~7GB), and don't watch the large media folders for changes.
+  eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
+  eleventyConfig.watchIgnores.add("src/assets/media/**");
+  eleventyConfig.watchIgnores.add("src/assets/Pano/**");
+
   // Add a filter to slugify strings (for tag URLs etc)
   eleventyConfig.addFilter("slugify", function(str) {
     if (!str) return "";

@@ -296,9 +296,18 @@ jQuery(document).ready(function($) {
     });
     
     // Accessibility menu show/hide
-    $(".access").click(function() {
-      $("#accessMenu").toggle();
+    $(".access").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $("#accessMenu").toggleClass('open');
       $(this).toggleClass('open');
+    });
+
+    // Save accessibility options and close menu
+    $("#saveaccess").click(function(e) {
+      e.preventDefault();
+      $("#accessMenu").removeClass('open');
+      $(".access").removeClass('open');
     });
     
     // Homepage comment form
