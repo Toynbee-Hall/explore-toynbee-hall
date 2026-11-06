@@ -31,6 +31,24 @@ module.exports = function(eleventyConfig) {
       .trim();
   });
 
+  // Plain-text excerpt of a page's raw markdown/HTML, for link-preview descriptions
+  eleventyConfig.addFilter("shareExcerpt", function(raw, maxLen = 200) {
+    if (!raw || typeof raw !== "string") return "";
+    const paragraphs = raw
+      .replace(/\{%[\s\S]*?%\}|\{\{[\s\S]*?\}\}/g, "")  // template tags
+      .replace(/<[^>]+>/g, " ")                          // HTML tags
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, "")              // markdown images
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")           // markdown links -> text
+      .replace(/[*_#>`]+/g, "")                          // emphasis, headings, quotes
+      .split(/\n\s*\n/)
+      .map(p => p.replace(/\s+/g, " ").trim())
+      .filter(p => p.length > 40 && !/^No description available/i.test(p));
+    if (!paragraphs.length) return "";
+    const text = paragraphs[0];
+    if (text.length <= maxLen) return text;
+    return text.slice(0, text.lastIndexOf(" ", maxLen)).replace(/[,;:.\s]+$/, "") + "…";
+  });
+
   // Check if string matches a regex pattern
   eleventyConfig.addFilter("match", function(str, pattern) {
     if (!str) return false;

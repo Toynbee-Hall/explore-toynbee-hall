@@ -1,7 +1,8 @@
 {
   "name": "Toynbee Hall",
   "description": "Explore Toynbee Hall - A Pioneering Settlement House in London's East End",
-  "url": "",
+  "url": "https://staging.explore.toynbeehall.org.uk",
   "logo": "/assets/media/4537_Toynbee_Hall_logo_No_strapline_CMYK.jpg",
-  "exploreLogo": "/assets/theme/img/Explore-Toynbee-Hall.svg"
+  "exploreLogo": "/assets/theme/img/Explore-Toynbee-Hall.svg",
+  "shareImage": "/assets/theme/img/share-card.jpg"
 }
